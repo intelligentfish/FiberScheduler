@@ -27,6 +27,9 @@
     <ClCompile Include="ServiceFiber.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="TcpService.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Fiber.hpp">
@@ -36,6 +39,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="ServiceFiber.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="TcpService.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

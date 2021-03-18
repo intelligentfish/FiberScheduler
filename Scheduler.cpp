@@ -1,5 +1,7 @@
 #include "Scheduler.hpp"
 
+#include "TcpService.h"
+
 /// <summary>
 /// 构造
 /// </summary>
@@ -18,13 +20,16 @@ Scheduler::~Scheduler() {}
 /// 运行
 /// </summary>
 void Scheduler::run() {
-  // 创建两个协程测试
-  for (auto i = 0; i < 10; i++) {
-    Fiber* ctx = new ServiceFiber(this, true);
-    ctx->setHandle(CreateFiber(0, &Fiber::entry, ctx));
-    if (nullptr == ctx->getHandle()) continue;
-    _fiberList.push_back(ctx);
-  }
+  // 创建TCP服务协程
+  Fiber* ctx = new TcpService(10086, this, true);
+  ctx->setHandle(CreateFiber(0, &Fiber::entry, ctx));
+  if (nullptr != ctx->getHandle()) _fiberList.push_back(ctx);
+
+  // 创建协程测试调度
+  ctx = new ServiceFiber(this, true);
+  ctx->setHandle(CreateFiber(0, &Fiber::entry, ctx));
+  if (nullptr != ctx->getHandle()) _fiberList.push_back(ctx);
+
   schedule();
 }
 

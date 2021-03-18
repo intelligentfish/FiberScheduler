@@ -23,11 +23,13 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Scheduler.cpp" />
     <ClCompile Include="ServiceFiber.cpp" />
+    <ClCompile Include="TcpService.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Fiber.hpp" />
     <ClInclude Include="Scheduler.hpp" />
     <ClInclude Include="ServiceFiber.hpp" />
+    <ClInclude Include="TcpService.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

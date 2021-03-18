@@ -9,9 +9,21 @@
 /// Fiber上下文
 /// </summary>
 struct Scheduler : public virtual Fiber {
+  /// <summary>
+  /// 参数个数
+  /// </summary>
   int _argc;
+  /// <summary>
+  /// 参数数组
+  /// </summary>
   char** _argv;
+  /// <summary>
+  /// 环境变量数组
+  /// </summary>
   char** _env;
+  /// <summary>
+  /// Fiber列表
+  /// </summary>
   std::list<Fiber*> _fiberList;
 
   /// <summary>

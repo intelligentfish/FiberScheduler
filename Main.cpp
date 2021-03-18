@@ -1,6 +1,8 @@
-﻿#include <Windows.h>
+﻿#include <WinSock2.h>
 
 #include "Scheduler.hpp"
+
+#pragma comment(lib, "ws2_32")
 
 /// <summary>
 /// 入口方法
@@ -12,6 +14,9 @@
 int main(int argc, char** argv, char** env) {
   auto startupFiber = ConvertThreadToFiber(NULL);
   if (nullptr == startupFiber) return -1;
+
+  WSADATA wsaData{};
+  if (WSAStartup(MAKEWORD(2, 2), &wsaData)) return -2;
 
   Fiber* ctx = new Scheduler(argc, argv, env);
   auto mainFiber = CreateFiber(0, &Fiber::entry, ctx);
